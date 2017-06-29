@@ -24,18 +24,12 @@ bbt <- arrange(bbt, -ano)
 
 
 
-Column {data-width=250}
+Column {data-width=300}
 -----------------------------------------------------------------------
 
 ### Apresentação 
 
-
-SISBBT é uma interface de consulta aos **livros** do acervo Biblioteca Setorial do Departamento de Fitopatologia da Universidade Federal de Viçosa. A tabela ao lado está ordenada pelo ano mais recente de publicação. 
-
-
-Como utilizar
-
-> Insira o termo a consultar no campo de busca livre acima da tabela. Para voltar, use "backspace" para limpar o campo de busca.
+SISBBT é uma interface de consulta aos **livros** do acervo Biblioteca Setorial do Departamento de Fitopatologia da Universidade Federal de Viçosa. A tabela ao lado está ordenada pelo ano mais recente de publicação. Para utilizar, insira o termo a consultar no campo de busca livre acima da tabela. Use "backspace" para limpar o campo de busca.
  
 
 Número de livros: `r nrow(bbt)`
