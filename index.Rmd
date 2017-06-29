@@ -16,18 +16,51 @@ library(crosstalk)
 library(plotly)
 library(viridis)
 library(DT)
+Sys.setlocale("LC_ALL", 'pt_BR.UTF-8')
+bbt <- read_excel("acervo-bbt-dfp.xlsx")
+bbt <- arrange(bbt, -ano)
 ```
+
+
+
+
+Column {data-width=250}
+-----------------------------------------------------------------------
+
+### Apresentação 
+
+
+SISBBT é uma interface de consulta aos **livros** do acervo Biblioteca Setorial do Departamento de Fitopatologia da Universidade Federal de Viçosa. A tabela ao lado está ordenada pelo ano mais recente de publicação. 
+
+
+Como utilizar
+
+> Insira o termo a consultar no campo de busca livre acima da tabela. Para voltar, use "backspace" para limpar o campo de busca.
+ 
+
+Número de livros: `r nrow(bbt)`
+
+Última atualização: `r Sys.Date()`
+
+
+### Títulos por ano
+
+```{r}
+bbt %>% 
+  plot_ly(x = ~ano, 
+         colors = viridis_pal(option = "D")(3)) %>% 
+  layout(barmode = 'stack',
+         margin=list(l=60,r=30,t=40,b=40))
+
+```
+
+
 
 Column {data-width=750}
 -----------------------------------------------------------------------
 
 ### Livros no acervo
 
-```{r, include=FALSE}
-Sys.setlocale("LC_ALL", 'pt_BR.UTF-8')
-bbt <- read_excel("acervo-bbt-dfp.xlsx")
-bbt <- arrange(bbt, -ano)
-```
 
 ```{r}
 datatable(bbt, 
@@ -50,28 +83,4 @@ datatable(bbt,
 ```
 
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Apresentação 
-
-
-SISBBT é uma interface de consulta aos **livros** do acervo Biblioteca Setorial do Departamento de Fitopatologia da Universidade Federal de Viçosa. Para consultar, escreva o termo a consultar no campo de busca livre acima da tabela. A tabela ao lado está ordenada pelo ano mais recente de publicação. 
-
-Número de livros: `r nrow(bbt)`
-
-Última atualização: `r Sys.Date()`
-
-### Títulos por ano
-
-```{r}
-g1 <- bbt %>% 
-  ggplot(aes(ano))+
-  geom_bar(fill = "steelblue")+
-  theme_minimal()+
-  labs(y ="Número")
-
-(gg <- ggplotly(g1))
-
-```
 
