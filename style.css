@@ -1,0 +1,27 @@
+@import 'https://fonts.googleapis.com/css?family=Oswald|Roboto';
+@import url('https://fonts.googleapis.com/css?family=Pragati+Narrow');
+
+.rev{
+font-family: 'Oswald', sans-serif;
+font-size:20px;
+padding-bottom:5px;
+}
+body {
+     font-size: 16px;
+     font-family: 'Pragati Narrow', sans-serif
+     }
+
+
+p    {
+     padding-left: 10px; 
+     padding-right: 10px;
+     padding-top:10px;
+     padding-bottom:2px
+     }
+.td-limit {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
