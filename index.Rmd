@@ -1,8 +1,9 @@
 ---
-title: "SISBBT Fitopatologia"
+title: "Biblioteca Setorial Fitopatologia UFV"
 output: 
   flexdashboard::flex_dashboard:
     theme: yeti
+    logo: icon-bbt.png
     css: style.css
     orientation: columns
     vertical_layout: fill
@@ -18,7 +19,8 @@ library(viridis)
 library(DT)
 Sys.setlocale("LC_ALL", 'pt_BR.UTF-8')
 bbt <- read_excel("acervo-bbt-dfp.xlsx")
-bbt <- arrange(bbt, -ano)
+bbt <- select(bbt, -1)
+bbt <- arrange(bbt, codigo)
 ```
 
 
@@ -29,15 +31,14 @@ Column {data-width=300}
 
 ### Apresentação 
 
-SISBBT é uma interface de consulta aos **livros** do acervo Biblioteca Setorial do Departamento de Fitopatologia da Universidade Federal de Viçosa. A tabela ao lado está ordenada pelo ano mais recente de publicação. Para utilizar, insira o termo a consultar no campo de busca livre acima da tabela. Use "backspace" para limpar o campo de busca.
+Bem-vindo à interface de consulta aos **livros** do acervo da Biblioteca Setorial do Departamento de Fitopatologia da Universidade Federal de Viçosa. A tabela está ordenada quanto ao número de catalogação. Clique em cima do nome de qualquer coluna para alterar a ordenação. Entre qualquer termo no campo de busca para aplicar os filtros. Use "backspace" para limpar a busca e realizar nova consulta. A lista pode ser obtida no formato PDF ou planilha eletrônica.
  
-
-Número de livros: `r nrow(bbt)`
-
-Última atualização: `r Sys.Date()`
+Número de livros: `r nrow(bbt)`<br>
+Última atualização: `r format(Sys.Date(), "%d %b %Y")`
 
 
-### Títulos por ano
+
+### Número de livros por ano de publicação
 
 ```{r}
 bbt %>% 
@@ -53,7 +54,7 @@ bbt %>%
 Column {data-width=750}
 -----------------------------------------------------------------------
 
-### Livros no acervo
+### Tabela de livros do acervo
 
 
 ```{r}
@@ -61,7 +62,7 @@ datatable(bbt,
           extensions = c('Buttons', 'ColReorder'),
           escape = TRUE,
           rownames = FALSE, 
-          colnames = c('Catalogação', 'Título', 'Autor', 'Volume', 'Ano', 'N. de exemplares', 'Edição'), 
+          colnames = c('Num. de catalogação', 'Título', 'Autor', 'Volume', 'Ano', 'N. de exemplares', 'Edição'), 
          class = 'cell-border stripe',
                       options=list(dom = 'Bfrtip',buttons = c( 'excel', 'pdf'), deferRender=TRUE, 
                           scrollY=500, 
@@ -73,7 +74,7 @@ datatable(bbt,
   lengthMenu = c(100, 250, 500))) %>% 
  formatStyle(
   c('codigo', 'titulo', 'autor', 'volume', 'ano', 'qtdade', 'edicao'),
-  fontSize = '120%')
+  fontSize = '125%')
 ```
 
 
