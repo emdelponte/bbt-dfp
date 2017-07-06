@@ -31,9 +31,7 @@ Column {data-width=250}
 
 ### Apresentação 
 
-Bem-vindo à página de consulta aos **livros** do acervo da **Biblioteca Setorial** do Departamento de Fitopatologia da Universidade Federal de Viçosa. 
-
-A tabela ao lado está ordenada pelo número de catalogação do livro. Clique no nome de qualquer coluna para alterar a ordenação. Entre qualquer termo no campo de busca para aplicar os filtros. Use "backspace" para limpar a busca e realizar nova consulta. A lista pode ser obtida no formato PDF ou planilha eletrônica, clicando nos respectivos botões.
+Bem-vindo à página de consulta aos **livros** do acervo da **Biblioteca Setorial** do Departamento de Fitopatologia da Universidade Federal de Viçosa. A tabela está ordenada pelo número de catalogação do livro. Clique no nome de qualquer coluna para alterar a ordenação. Entre qualquer termo no campo de busca para consultar. Use "backspace" para limpar a busca e realizar nova consulta. 
  
  
 <h2> Procedimentos para empréstimos </h2>
