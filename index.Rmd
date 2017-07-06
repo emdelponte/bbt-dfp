@@ -1,9 +1,9 @@
 ---
-title: "Biblioteca Setorial Fitopatologia UFV"
+title: "Biblioteca Setorial - Departamento de Fitopatologia - UFV"
 output: 
   flexdashboard::flex_dashboard:
-    theme: yeti
-    logo: icon-bbt.png
+    theme: flatly
+    logo: icon-bbt3.png
     css: style.css
     orientation: columns
     vertical_layout: fill
@@ -26,32 +26,48 @@ bbt <- arrange(bbt, codigo)
 
 
 
-Column {data-width=300}
+Column {data-width=250}
 -----------------------------------------------------------------------
 
 ### Apresentação 
 
-Bem-vindo à página de consulta aos **livros** do acervo da **Biblioteca Setorial** do Departamento de Fitopatologia da Universidade Federal de Viçosa. A tabela está ordenada pelo número de catalogação do livro. Clique no nome de qualquer coluna para alterar a ordenação. Entre qualquer termo no campo de busca para aplicar os filtros. Use "backspace" para limpar a busca e realizar nova consulta. A lista pode ser obtida no formato PDF ou planilha eletrônica, clicando nos respectivos botões.
+Bem-vindo à página de consulta aos **livros** do acervo da **Biblioteca Setorial** do Departamento de Fitopatologia da Universidade Federal de Viçosa. 
+
+A tabela ao lado está ordenada pelo número de catalogação do livro. Clique no nome de qualquer coluna para alterar a ordenação. Entre qualquer termo no campo de busca para aplicar os filtros. Use "backspace" para limpar a busca e realizar nova consulta. A lista pode ser obtida no formato PDF ou planilha eletrônica, clicando nos respectivos botões.
  
+ 
+<h2> Procedimentos para empréstimos </h2>
+
+- O material deve ser solicitado aos assistentes nos horários afixados na porta do recinto, atualizados a cada semestre. 
+
+-	No primeiro empréstimo, será criada uma ficha cadastral onde serão registrados os empréstimos
+
+-	O empréstimo é feito por at'é 15 dias consecutivos, podendo ser renovado por mesmo período, caso não esteja na lista de espera. 
+
+-	Não é permitido o empréstimo de revistas mas os exemplares podem ser retirados para fazer fotocópia e devolvidos dentro de uma hora. 
+
+-	Aqueles que por algum motivo perderem ou danificarem o exemplar, deverão assumir o ônus de ressarcir o valor do mesmo.
+
+-	O "nada consta" relativos aos empréstimos deverá ser solicitado aos bolsistas e levado para assinatura do professor responsável pela biblioteca setorial, Prof. Gleiber Quintão Furtado (gfurtado@ufv.br - 38991108)
+
 Número de livros: `r nrow(bbt)`<br>
 Última atualização: `r format(Sys.Date(), "%d %b %Y")`
 
 
 
-### Número de livros por ano de publicação
+### Número de livros por ano de publicação {data-height=230}
 
 ```{r}
 bbt %>% 
-  plot_ly(x = ~ano, 
-         colors = viridis_pal(option = "D")(3)) %>% 
+  plot_ly(x = ~ano, color = I("mediumaquamarine")) %>% 
   layout(barmode = 'stack',
-         margin=list(l=60,r=30,t=40,b=40))
+                 margin=list(l=60,r=30,t=40,b=40))
 
 ```
 
 
 
-Column {data-width=750}
+Column {}
 -----------------------------------------------------------------------
 
 ### Tabela de livros do acervo
@@ -74,8 +90,7 @@ datatable(bbt,
   lengthMenu = c(100, 250, 500))) %>% 
  formatStyle(
   c('codigo', 'titulo', 'autor', 'volume', 'ano', 'qtdade', 'edicao'),
-  fontSize = '125%')
+  fontSize = '100%')
 ```
-
 
 
